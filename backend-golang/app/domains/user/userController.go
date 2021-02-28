@@ -28,7 +28,7 @@ func (controller UsrController) Users(writer http.ResponseWriter, request *http.
 		Data: userResult.Data,
 	}
 	byteOfResponse, _ := json.Marshal(response)
-	writer.WriteHeader(userResult.Meta.Code)
+	writer.WriteHeader(http.StatusOK)
 	writer.Write(byteOfResponse)
 	log.Printf(" | %v %v", userResult.Meta.Status, userResult.Meta.Message)
 	helper.LogApp(userResult.Meta.Status + " " + userResult.Meta.Message)
@@ -44,7 +44,7 @@ func (controller UsrController) UserByID(writer http.ResponseWriter, request *ht
 		Data: userByIDResult.Data,
 	}
 	byteOfResponse, _ := json.Marshal(response)
-	writer.WriteHeader(userByIDResult.Meta.Code)
+	writer.WriteHeader(http.StatusOK)
 	writer.Write(byteOfResponse)
 	log.Printf(" | %v %v", userByIDResult.Meta.Status, userByIDResult.Meta.Message)
 	helper.LogApp(userByIDResult.Meta.Status + " " + userByIDResult.Meta.Message)

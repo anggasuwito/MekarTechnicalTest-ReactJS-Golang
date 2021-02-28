@@ -25,7 +25,7 @@ func RunServer(router *mux.Router) {
 	log.Printf(" | Port run : %v", port)
 	helper.LogApp("Server run : " + server)
 	helper.LogApp("Port run : " + port)
-	handler := cors.Default().Handler(router)
+	handler := cors.AllowAll().Handler(router)
 	err := http.ListenAndServe(serverAndPort, handler)
 	helper.FatalError(err, "Router Error")
 }

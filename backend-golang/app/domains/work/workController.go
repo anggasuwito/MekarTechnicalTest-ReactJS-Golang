@@ -28,7 +28,7 @@ func (controller WrkController) Works(writer http.ResponseWriter, request *http.
 		Data: workResult.Data,
 	}
 	byteOfResponse, _ := json.Marshal(response)
-	writer.WriteHeader(workResult.Meta.Code)
+	writer.WriteHeader(http.StatusOK)
 	writer.Write(byteOfResponse)
 	log.Printf(" | %v %v", workResult.Meta.Status, workResult.Meta.Message)
 	helper.LogApp(workResult.Meta.Status + " " + workResult.Meta.Message)

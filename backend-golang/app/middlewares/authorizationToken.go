@@ -25,7 +25,7 @@ func AuthorizationToken(next http.Handler) http.Handler {
 				Data: nil,
 			}
 			byteOfResponse, _ := json.Marshal(response)
-			w.WriteHeader(401)
+			w.WriteHeader(http.StatusOK)
 			w.Write(byteOfResponse)
 			log.Println(" | No token key")
 			helper.LogApp("No token key")
@@ -46,7 +46,7 @@ func AuthorizationToken(next http.Handler) http.Handler {
 				Data: nil,
 			}
 			byteOfResponse, _ := json.Marshal(response)
-			w.WriteHeader(401)
+			w.WriteHeader(http.StatusOK)
 			w.Write(byteOfResponse)
 			log.Println(" | Token expired or invalid token key")
 			helper.LogApp("Token expired or invalid token key")
