@@ -1,0 +1,47 @@
+package work
+
+import (
+	"database/sql"
+	"encoding/json"
+	"log"
+	"mekarTechnicalTest/app/models"
+	"mekarTechnicalTest/utils/helper"
+	"net/http"
+)
+
+//WrkController is a struct for depedency injection
+type WrkController struct {
+	workUseCase WrkUseCaseInterface
+}
+
+//InitWrkController is a function for inject database
+func InitWrkController(db *sql.DB) *WrkController {
+	return &WrkController{workUseCase: InitWrkUseCase(db)}
+}
+
+//Works is a function for get all works list
+func (controller WrkController) Works(writer http.ResponseWriter, request *http.Request) {
+	var workResult models.Response
+	controller.workUseCase.Works(&workResult)
+	if workResult.Meta.Code == 404 {
+		response := models.Response{
+			Meta: workResult.Meta,
+			Data: workResult.Data,
+		}
+		byteOfResponse, _ := json.Marshal(response)
+		writer.WriteHeader(workResult.Meta.Code)
+		writer.Write(byteOfResponse)
+		log.Printf(" | %v", workResult.Meta.Message)
+		helper.LogApp(workResult.Meta.Message)
+	} else {
+		response := models.Response{
+			Meta: workResult.Meta,
+			Data: workResult.Data,
+		}
+		byteOfResponse, _ := json.Marshal(response)
+		writer.WriteHeader(workResult.Meta.Code)
+		writer.Write(byteOfResponse)
+		log.Println(" | Success get all works")
+		helper.LogApp("Success get all works")
+	}
+}

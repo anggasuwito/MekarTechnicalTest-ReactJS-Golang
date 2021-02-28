@@ -1,7 +1,13 @@
 package main
 
-import "fmt"
+import (
+	"mekarTechnicalTest/app/domains"
+	"mekarTechnicalTest/configs"
+	"mekarTechnicalTest/configs/router"
+)
 
 func main() {
-	fmt.Println("HELLO WORLD")
+	database, route := configs.InitConfig()
+	domains.InitDomain(database, route)
+	router.RunServer(route)
 }

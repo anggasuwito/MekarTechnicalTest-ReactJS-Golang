@@ -1,0 +1,234 @@
+
+2021-02-28 13:22:33 | Starting Database Connection : db_mekar
+2021-02-28 13:22:33 | Server run : localhost
+2021-02-28 13:22:33 | Port run : 8001
+2021-02-28 13:23:13 | accessing path /admin/login with application PostmanRuntime/7.26.8 from 127.0.0.1:53288
+2021-02-28 13:23:13 | Username not found
+2021-02-28 13:25:36 | accessing path /admin/login with application PostmanRuntime/7.26.8 from 127.0.0.1:53288
+2021-02-28 13:25:36 | Username not found
+2021-02-28 13:26:45 | Starting Database Connection : db_mekar
+2021-02-28 13:26:45 | Server run : localhost
+2021-02-28 13:26:45 | Port run : 8001
+2021-02-28 13:26:51 | accessing path /admin/login with application PostmanRuntime/7.26.8 from 127.0.0.1:53398
+2021-02-28 13:26:51 | Username not found
+2021-02-28 13:27:11 | accessing path /admin/login with application PostmanRuntime/7.26.8 from 127.0.0.1:53398
+2021-02-28 13:27:11 | Username not found
+2021-02-28 13:27:16 | accessing path /admin/login with application PostmanRuntime/7.26.8 from 127.0.0.1:53398
+2021-02-28 13:27:16 | username  is empty
+2021-02-28 13:27:22 | accessing path /admin/login with application PostmanRuntime/7.26.8 from 127.0.0.1:53398
+2021-02-28 13:27:22 | password is empty
+2021-02-28 13:28:40 | Starting Database Connection : db_mekar
+2021-02-28 13:28:40 | Server run : localhost
+2021-02-28 13:28:40 | Port run : 8001
+2021-02-28 13:28:43 | accessing path /admin/login with application PostmanRuntime/7.26.8 from 127.0.0.1:53455
+2021-02-28 13:28:43 | password is empty
+2021-02-28 13:28:46 | accessing path /admin/login with application PostmanRuntime/7.26.8 from 127.0.0.1:53455
+2021-02-28 13:28:46 | Username not found
+2021-02-28 13:28:54 | accessing path /admin/login with application PostmanRuntime/7.26.8 from 127.0.0.1:53455
+2021-02-28 13:28:54 | Username not found
+2021-02-28 13:29:44 | Starting Database Connection : db_mekar
+2021-02-28 13:29:44 | Server run : localhost
+2021-02-28 13:29:44 | Port run : 8001
+2021-02-28 13:29:47 | accessing path /admin/login with application PostmanRuntime/7.26.8 from 127.0.0.1:53489
+2021-02-28 13:29:47 | Username not found
+2021-02-28 13:29:54 | accessing path /admin/login with application PostmanRuntime/7.26.8 from 127.0.0.1:53489
+2021-02-28 13:29:54 | Username not found
+2021-02-28 13:29:55 | accessing path /admin/login with application PostmanRuntime/7.26.8 from 127.0.0.1:53489
+2021-02-28 13:29:55 | Username not found
+2021-02-28 13:29:58 | accessing path /admin/login with application PostmanRuntime/7.26.8 from 127.0.0.1:53489
+2021-02-28 13:29:58 | Username not found
+2021-02-28 13:33:27 | Starting Database Connection : db_mekar
+2021-02-28 13:33:27 | Server run : localhost
+2021-02-28 13:33:27 | Port run : 8001
+2021-02-28 13:33:29 | accessing path /admin/login with application PostmanRuntime/7.26.8 from 127.0.0.1:53607
+2021-02-28 13:33:29 | Username not found
+2021-02-28 13:33:30 | accessing path /admin/login with application PostmanRuntime/7.26.8 from 127.0.0.1:53607
+2021-02-28 13:33:30 | Username not found
+2021-02-28 13:33:31 | accessing path /admin/login with application PostmanRuntime/7.26.8 from 127.0.0.1:53607
+2021-02-28 13:33:31 | Username not found
+2021-02-28 13:33:32 | accessing path /admin/login with application PostmanRuntime/7.26.8 from 127.0.0.1:53607
+2021-02-28 13:33:32 | Username not found
+2021-02-28 13:33:33 | accessing path /admin/login with application PostmanRuntime/7.26.8 from 127.0.0.1:53607
+2021-02-28 13:33:33 | Username not found
+2021-02-28 13:33:33 | accessing path /admin/login with application PostmanRuntime/7.26.8 from 127.0.0.1:53607
+2021-02-28 13:33:33 | Username not found
+2021-02-28 13:33:34 | accessing path /admin/login with application PostmanRuntime/7.26.8 from 127.0.0.1:53607
+2021-02-28 13:33:34 | Username not found
+2021-02-28 13:33:35 | accessing path /admin/login with application PostmanRuntime/7.26.8 from 127.0.0.1:53607
+2021-02-28 13:33:35 | Username not found
+2021-02-28 13:33:36 | accessing path /admin/login with application PostmanRuntime/7.26.8 from 127.0.0.1:53607
+2021-02-28 13:33:36 | Username not found
+2021-02-28 13:34:12 | accessing path /admin/login with application PostmanRuntime/7.26.8 from 127.0.0.1:53607
+2021-02-28 13:34:12 | Username not found
+2021-02-28 13:35:28 | Starting Database Connection : db_mekar
+2021-02-28 13:35:28 | Server run : localhost
+2021-02-28 13:35:28 | Port run : 8001
+2021-02-28 13:35:33 | accessing path /admin/login with application PostmanRuntime/7.26.8 from 127.0.0.1:53670
+2021-02-28 13:35:33 | Username not found
+2021-02-28 13:37:32 | Starting Database Connection : db_mekar
+2021-02-28 13:37:32 | Server run : localhost
+2021-02-28 13:37:32 | Port run : 8001
+2021-02-28 13:37:33 | accessing path /admin/login with application PostmanRuntime/7.26.8 from 127.0.0.1:53734
+2021-02-28 13:37:33 | Username not found
+2021-02-28 13:37:42 | accessing path /admin/login with application PostmanRuntime/7.26.8 from 127.0.0.1:53734
+2021-02-28 13:37:42 | Username not found
+2021-02-28 13:39:12 | Starting Database Connection : db_mekar
+2021-02-28 13:39:12 | Server run : localhost
+2021-02-28 13:39:12 | Port run : 8001
+2021-02-28 13:39:15 | accessing path /admin/login with application PostmanRuntime/7.26.8 from 127.0.0.1:53789
+2021-02-28 13:39:15 | Username not found
+2021-02-28 13:39:44 | Starting Database Connection : db_mekar
+2021-02-28 13:39:44 | Server run : localhost
+2021-02-28 13:39:44 | Port run : 8001
+2021-02-28 13:39:47 | accessing path /admin/login with application PostmanRuntime/7.26.8 from 127.0.0.1:53807
+2021-02-28 13:39:47 | Username not found
+2021-02-28 13:41:43 | accessing path /admin/login with application PostmanRuntime/7.26.8 from 127.0.0.1:53807
+2021-02-28 13:41:43 | username  is empty
+2021-02-28 13:41:58 | accessing path /admin/login with application PostmanRuntime/7.26.8 from 127.0.0.1:53807
+2021-02-28 13:41:58 | password is empty
+2021-02-28 13:42:03 | accessing path /admin/login with application PostmanRuntime/7.26.8 from 127.0.0.1:53807
+2021-02-28 13:42:03 | Username not found
+2021-02-28 13:42:09 | accessing path /admin/login with application PostmanRuntime/7.26.8 from 127.0.0.1:53807
+2021-02-28 13:42:09 | Username not found
+2021-02-28 13:42:16 | Starting Database Connection : db_mekar
+2021-02-28 13:42:16 | Server run : localhost
+2021-02-28 13:42:16 | Port run : 8001
+2021-02-28 13:43:08 | Starting Database Connection : db_mekar
+2021-02-28 13:43:08 | Server run : localhost
+2021-02-28 13:43:08 | Port run : 8001
+2021-02-28 13:43:16 | accessing path /admin/login with application PostmanRuntime/7.26.8 from 127.0.0.1:53916
+2021-02-28 13:43:16 | Username not found
+2021-02-28 13:44:04 | Starting Database Connection : db_mekar
+2021-02-28 13:44:04 | Server run : localhost
+2021-02-28 13:44:04 | Port run : 8001
+2021-02-28 13:44:05 | accessing path /admin/login with application PostmanRuntime/7.26.8 from 127.0.0.1:53942
+2021-02-28 13:44:05 | Success admin login
+2021-02-28 13:44:42 | Starting Database Connection : db_mekar
+2021-02-28 13:44:42 | Server run : localhost
+2021-02-28 13:44:42 | Port run : 8001
+2021-02-28 13:44:44 | accessing path /admin/login with application PostmanRuntime/7.26.8 from 127.0.0.1:53967
+2021-02-28 13:44:44 | Success admin login
+2021-02-28 13:45:02 | accessing path /admin/login with application PostmanRuntime/7.26.8 from 127.0.0.1:53967
+2021-02-28 13:45:02 | Username not found
+2021-02-28 13:45:08 | accessing path /admin/login with application PostmanRuntime/7.26.8 from 127.0.0.1:53967
+2021-02-28 13:45:08 | Success admin login
+2021-02-28 13:45:11 | accessing path /admin/login with application PostmanRuntime/7.26.8 from 127.0.0.1:53967
+2021-02-28 13:45:11 | invalid username or password
+2021-02-28 13:45:19 | accessing path /admin/login with application PostmanRuntime/7.26.8 from 127.0.0.1:53967
+2021-02-28 13:45:19 | Success admin login
+2021-02-28 13:46:06 | Starting Database Connection : db_mekar
+2021-02-28 13:46:06 | Server run : localhost
+2021-02-28 13:46:06 | Port run : 8001
+2021-02-28 13:46:07 | accessing path /admin/login with application PostmanRuntime/7.26.8 from 127.0.0.1:54010
+2021-02-28 13:46:07 | Success admin login
+2021-02-28 13:51:13 | Starting Database Connection : db_mekar
+2021-02-28 13:51:13 | Server run : localhost
+2021-02-28 13:51:13 | Port run : 8001
+2021-02-28 13:51:15 | accessing path /admin/login with application PostmanRuntime/7.26.8 from 127.0.0.1:54156
+2021-02-28 13:51:15 | Success admin login
+2021-02-28 15:06:16 | Starting Database Connection : db_mekar
+2021-02-28 15:06:16 | Server run : localhost
+2021-02-28 15:06:16 | Port run : 8001
+2021-02-28 15:07:32 | Starting Database Connection : db_mekar
+2021-02-28 15:07:32 | Server run : localhost
+2021-02-28 15:07:32 | Port run : 8001
+2021-02-28 15:07:34 | accessing path /study/studies with application PostmanRuntime/7.26.8 from 127.0.0.1:56358
+2021-02-28 15:07:34 | No token key
+2021-02-28 15:07:41 | accessing path /admin/login with application PostmanRuntime/7.26.8 from 127.0.0.1:56358
+2021-02-28 15:07:41 | Success admin login
+2021-02-28 15:08:09 | accessing path /study/studies with application PostmanRuntime/7.26.8 from 127.0.0.1:56358
+2021-02-28 15:08:09 | Error not nil
+2021-02-28 15:08:09 | looping study error
+2021-02-28 15:10:17 | Starting Database Connection : db_mekar
+2021-02-28 15:10:17 | Server run : localhost
+2021-02-28 15:10:17 | Port run : 8001
+2021-02-28 15:10:22 | accessing path /study/studies with application PostmanRuntime/7.26.8 from 127.0.0.1:56442
+2021-02-28 15:10:22 | Success get all studies
+2021-02-28 15:10:33 | Starting Database Connection : db_mekar
+2021-02-28 15:10:33 | Server run : localhost
+2021-02-28 15:10:33 | Port run : 8001
+2021-02-28 15:10:35 | accessing path /study/studies with application PostmanRuntime/7.26.8 from 127.0.0.1:56452
+2021-02-28 15:10:35 | Success get all studies
+2021-02-28 15:10:39 | accessing path /study/studies with application PostmanRuntime/7.26.8 from 127.0.0.1:56452
+2021-02-28 15:10:39 | Success get all studies
+2021-02-28 15:10:40 | accessing path /study/studies with application PostmanRuntime/7.26.8 from 127.0.0.1:56452
+2021-02-28 15:10:40 | Success get all studies
+2021-02-28 15:11:05 | Starting Database Connection : db_mekar
+2021-02-28 15:11:05 | Server run : localhost
+2021-02-28 15:11:05 | Port run : 8001
+2021-02-28 15:11:07 | accessing path /study/studies with application PostmanRuntime/7.26.8 from 127.0.0.1:56472
+2021-02-28 15:11:07 | Success get all studies
+2021-02-28 15:11:13 | accessing path /study/studies with application PostmanRuntime/7.26.8 from 127.0.0.1:56472
+2021-02-28 15:11:13 | Success get all studies
+2021-02-28 15:11:18 | Starting Database Connection : db_mekar
+2021-02-28 15:11:18 | Server run : localhost
+2021-02-28 15:11:18 | Port run : 8001
+2021-02-28 15:11:18 | accessing path /study/studies with application PostmanRuntime/7.26.8 from 127.0.0.1:56480
+2021-02-28 15:11:18 | Success get all studies
+2021-02-28 15:11:25 | accessing path /work/works with application PostmanRuntime/7.26.8 from 127.0.0.1:56480
+2021-02-28 15:11:25 | Success get all works
+2021-02-28 15:14:30 | accessing path /work/works with application PostmanRuntime/7.26.8 from 127.0.0.1:56480
+2021-02-28 15:14:30 | No token key
+2021-02-28 15:14:37 | Starting Database Connection : db_mekar
+2021-02-28 15:14:37 | Server run : localhost
+2021-02-28 15:14:37 | Port run : 8001
+2021-02-28 15:14:40 | accessing path /work/works with application PostmanRuntime/7.26.8 from 127.0.0.1:56585
+2021-02-28 15:14:40 | No token key
+2021-02-28 18:38:57 | Starting Database Connection : db_mekar
+2021-02-28 18:38:57 | Server run : localhost
+2021-02-28 18:38:57 | Port run : 8001
+2021-02-28 18:38:59 | accessing path /work/works with application PostmanRuntime/7.26.8 from 127.0.0.1:64036
+2021-02-28 18:38:59 | No token key
+2021-02-28 20:17:25 | Starting Database Connection : db_mekar
+2021-02-28 20:17:25 | Server run : localhost
+2021-02-28 20:17:25 | Port run : 8001
+2021-02-28 20:17:35 | accessing path /admin/login with application PostmanRuntime/7.26.8 from 127.0.0.1:65445
+2021-02-28 20:17:35 | Success admin login
+2021-02-28 20:17:40 | accessing path /admin/login with application PostmanRuntime/7.26.8 from 127.0.0.1:65445
+2021-02-28 20:17:40 | Success admin login
+2021-02-28 20:19:07 | Starting Database Connection : db_mekar
+2021-02-28 20:19:07 | Server run : localhost
+2021-02-28 20:19:07 | Port run : 8001
+2021-02-28 20:19:10 | accessing path /user/users with application PostmanRuntime/7.26.8 from 127.0.0.1:65462
+2021-02-28 20:19:10 | Error not nil
+2021-02-28 20:19:10 | get all users error
+2021-02-28 20:19:47 | accessing path /user/1 with application PostmanRuntime/7.26.8 from 127.0.0.1:65462
+2021-02-28 20:19:47 | user not found
+2021-02-28 20:20:19 | Starting Database Connection : db_mekar
+2021-02-28 20:20:19 | Server run : localhost
+2021-02-28 20:20:19 | Port run : 8001
+2021-02-28 20:20:22 | accessing path /user/1 with application PostmanRuntime/7.26.8 from 127.0.0.1:65481
+2021-02-28 20:20:22 | Success get user by id
+2021-02-28 20:21:32 | accessing path /user/2 with application PostmanRuntime/7.26.8 from 127.0.0.1:65481
+2021-02-28 20:21:32 | user not found
+2021-02-28 20:21:35 | accessing path /user/1 with application PostmanRuntime/7.26.8 from 127.0.0.1:65481
+2021-02-28 20:21:35 | Success get user by id
+2021-02-28 20:23:17 | accessing path /user/createuser with application PostmanRuntime/7.26.8 from 127.0.0.1:65481
+2021-02-28 20:23:17 | user work id is empty
+2021-02-28 20:23:38 | accessing path /user/createuser with application PostmanRuntime/7.26.8 from 127.0.0.1:65481
+2021-02-28 20:23:38 | Success create new user 
+2021-02-28 20:23:47 | accessing path /user/2 with application PostmanRuntime/7.26.8 from 127.0.0.1:65481
+2021-02-28 20:23:47 | Success get user by id
+2021-02-28 20:24:13 | Starting Database Connection : db_mekar
+2021-02-28 20:24:13 | Server run : localhost
+2021-02-28 20:24:13 | Port run : 8001
+2021-02-28 20:24:15 | accessing path /user/23 with application PostmanRuntime/7.26.8 from 127.0.0.1:65504
+2021-02-28 20:24:15 | user not found
+2021-02-28 20:26:33 | Starting Database Connection : db_mekar
+2021-02-28 20:26:33 | Server run : localhost
+2021-02-28 20:26:33 | Port run : 8001
+2021-02-28 20:26:34 | accessing path /user/2 with application PostmanRuntime/7.26.8 from 127.0.0.1:65514
+2021-02-28 20:26:34 | Success get user by id
+2021-02-28 20:29:16 | Starting Database Connection : db_mekar
+2021-02-28 20:29:16 | Server run : localhost
+2021-02-28 20:29:16 | Port run : 8001
+2021-02-28 20:29:22 | accessing path /user/users with application PostmanRuntime/7.26.8 from 127.0.0.1:49158
+2021-02-28 20:29:22 | Validate token error
+2021-02-28 20:29:22 | Token expired or invalid token key
+2021-02-28 20:29:26 | accessing path /admin/login with application PostmanRuntime/7.26.8 from 127.0.0.1:49158
+2021-02-28 20:29:26 | Success admin login
+2021-02-28 20:29:46 | accessing path /user/users with application PostmanRuntime/7.26.8 from 127.0.0.1:49158
+2021-02-28 20:29:46 | Validate token error
+2021-02-28 20:29:46 | Token expired or invalid token key
+2021-02-28 20:29:59 | accessing path /user/users with application PostmanRuntime/7.26.8 from 127.0.0.1:49158
+2021-02-28 20:29:59 | Success get all users
