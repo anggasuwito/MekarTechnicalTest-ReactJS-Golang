@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Route, Switch, withRouter } from 'react-router-dom'
+import { adminLogin } from '../api/AdminAPI'
 import LoginPage from './login/LoginPage'
 import MainNavbar from '../components/MainNavbar'
 import HomePage from './home/HomePage'
@@ -27,11 +28,21 @@ const Navigation = (props) => {
         }
     }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
-    const onLogin = () => {
-        setAuth(true)
-        sessionStorage.setItem("auth", "loggedIn")
-        props.history.push({
-            pathname: "/home"
+    const onLogin = (username, password) => {
+        console.log("nav = " + username);
+        console.log("nav = " + password);
+        adminLogin({
+            username: username,
+            password: password
+        }).then((response) => {
+            console.log(response.headers);
+            setAuth(true)
+            sessionStorage.setItem("auth", "loggedIn")
+            props.history.push({
+                pathname: "/home"
+            })
+        }).catch((err) => {
+            console.log("err = " + err);
         })
     }
 
@@ -47,7 +58,7 @@ const Navigation = (props) => {
         <div>
             <MainNavbar onLogout={onLogout} auth={auth} />
             <Switch>
-                <Route exact path="/" render={() => { return <LoginPage onLogin={onLogin}/> }} />
+                <Route exact path="/" render={() => { return <LoginPage onLogin={onLogin} /> }} />
                 {routeList}
                 <Route path="*" component={NotFoundPage} />
             </Switch>

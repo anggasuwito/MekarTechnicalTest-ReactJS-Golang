@@ -23,25 +23,13 @@ func InitStdController(db *sql.DB) *StdController {
 func (controller StdController) Studies(writer http.ResponseWriter, request *http.Request) {
 	var studyResult models.Response
 	controller.studyUseCase.Studies(&studyResult)
-	if studyResult.Meta.Code == 404 {
-		response := models.Response{
-			Meta: studyResult.Meta,
-			Data: studyResult.Data,
-		}
-		byteOfResponse, _ := json.Marshal(response)
-		writer.WriteHeader(studyResult.Meta.Code)
-		writer.Write(byteOfResponse)
-		log.Printf(" | %v", studyResult.Meta.Message)
-		helper.LogApp(studyResult.Meta.Message)
-	} else {
-		response := models.Response{
-			Meta: studyResult.Meta,
-			Data: studyResult.Data,
-		}
-		byteOfResponse, _ := json.Marshal(response)
-		writer.WriteHeader(studyResult.Meta.Code)
-		writer.Write(byteOfResponse)
-		log.Println(" | Success get all studies")
-		helper.LogApp("Success get all studies")
+	response := models.Response{
+		Meta: studyResult.Meta,
+		Data: studyResult.Data,
 	}
+	byteOfResponse, _ := json.Marshal(response)
+	writer.WriteHeader(http.StatusOK)
+	writer.Write(byteOfResponse)
+	log.Printf(" | %v %v", studyResult.Meta.Status, studyResult.Meta.Message)
+	helper.LogApp(studyResult.Meta.Status + " " + studyResult.Meta.Message)
 }

@@ -23,27 +23,15 @@ func InitUsrController(db *sql.DB) *UsrController {
 func (controller UsrController) Users(writer http.ResponseWriter, request *http.Request) {
 	var userResult models.Response
 	controller.userUseCase.Users(&userResult)
-	if userResult.Meta.Code == 404 {
-		response := models.Response{
-			Meta: userResult.Meta,
-			Data: userResult.Data,
-		}
-		byteOfResponse, _ := json.Marshal(response)
-		writer.WriteHeader(userResult.Meta.Code)
-		writer.Write(byteOfResponse)
-		log.Printf(" | %v", userResult.Meta.Message)
-		helper.LogApp(userResult.Meta.Message)
-	} else {
-		response := models.Response{
-			Meta: userResult.Meta,
-			Data: userResult.Data,
-		}
-		byteOfResponse, _ := json.Marshal(response)
-		writer.WriteHeader(userResult.Meta.Code)
-		writer.Write(byteOfResponse)
-		log.Println(" | Success get all users")
-		helper.LogApp("Success get all users")
+	response := models.Response{
+		Meta: userResult.Meta,
+		Data: userResult.Data,
 	}
+	byteOfResponse, _ := json.Marshal(response)
+	writer.WriteHeader(userResult.Meta.Code)
+	writer.Write(byteOfResponse)
+	log.Printf(" | %v %v", userResult.Meta.Status, userResult.Meta.Message)
+	helper.LogApp(userResult.Meta.Status + " " + userResult.Meta.Message)
 }
 
 //UserByID is a function for get user by id
@@ -51,27 +39,15 @@ func (controller UsrController) UserByID(writer http.ResponseWriter, request *ht
 	var userByIDResult models.Response
 	userID := helper.GomuxPathVariable("userId", request)
 	controller.userUseCase.UserByID(&userByIDResult, userID)
-	if userByIDResult.Meta.Code == 404 {
-		response := models.Response{
-			Meta: userByIDResult.Meta,
-			Data: userByIDResult.Data,
-		}
-		byteOfResponse, _ := json.Marshal(response)
-		writer.WriteHeader(userByIDResult.Meta.Code)
-		writer.Write(byteOfResponse)
-		log.Printf(" | %v", userByIDResult.Meta.Message)
-		helper.LogApp(userByIDResult.Meta.Message)
-	} else {
-		response := models.Response{
-			Meta: userByIDResult.Meta,
-			Data: userByIDResult.Data,
-		}
-		byteOfResponse, _ := json.Marshal(response)
-		writer.WriteHeader(userByIDResult.Meta.Code)
-		writer.Write(byteOfResponse)
-		log.Println(" | Success get user by id")
-		helper.LogApp("Success get user by id")
+	response := models.Response{
+		Meta: userByIDResult.Meta,
+		Data: userByIDResult.Data,
 	}
+	byteOfResponse, _ := json.Marshal(response)
+	writer.WriteHeader(userByIDResult.Meta.Code)
+	writer.Write(byteOfResponse)
+	log.Printf(" | %v %v", userByIDResult.Meta.Status, userByIDResult.Meta.Message)
+	helper.LogApp(userByIDResult.Meta.Status + " " + userByIDResult.Meta.Message)
 }
 
 //CreateUser is a function for create new user
@@ -80,25 +56,13 @@ func (controller UsrController) CreateUser(writer http.ResponseWriter, request *
 	var userDataBody UsrBodyModel
 	json.NewDecoder(request.Body).Decode(&userDataBody)
 	controller.userUseCase.CreateUser(&createUserResult, &userDataBody)
-	if createUserResult.Meta.Code == 404 {
-		response := models.Response{
-			Meta: createUserResult.Meta,
-			Data: createUserResult.Data,
-		}
-		byteOfResponse, _ := json.Marshal(response)
-		writer.WriteHeader(createUserResult.Meta.Code)
-		writer.Write(byteOfResponse)
-		log.Printf(" | %v", createUserResult.Meta.Message)
-		helper.LogApp(createUserResult.Meta.Message)
-	} else {
-		response := models.Response{
-			Meta: createUserResult.Meta,
-			Data: createUserResult.Data,
-		}
-		byteOfResponse, _ := json.Marshal(response)
-		writer.WriteHeader(createUserResult.Meta.Code)
-		writer.Write(byteOfResponse)
-		log.Println(" | Success create new user ")
-		helper.LogApp("Success create new user ")
+	response := models.Response{
+		Meta: createUserResult.Meta,
+		Data: createUserResult.Data,
 	}
+	byteOfResponse, _ := json.Marshal(response)
+	writer.WriteHeader(http.StatusOK)
+	writer.Write(byteOfResponse)
+	log.Printf(" | %v %v", createUserResult.Meta.Status, createUserResult.Meta.Message)
+	helper.LogApp(createUserResult.Meta.Status + " " + createUserResult.Meta.Message)
 }

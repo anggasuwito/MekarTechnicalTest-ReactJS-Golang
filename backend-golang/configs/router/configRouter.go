@@ -7,6 +7,7 @@ import (
 	"net/http"
 
 	"github.com/gorilla/mux"
+	"github.com/rs/cors"
 )
 
 //ConfigRouter is a function for create new router server and port
@@ -24,6 +25,7 @@ func RunServer(router *mux.Router) {
 	log.Printf(" | Port run : %v", port)
 	helper.LogApp("Server run : " + server)
 	helper.LogApp("Port run : " + port)
-	err := http.ListenAndServe(serverAndPort, router)
+	handler := cors.Default().Handler(router)
+	err := http.ListenAndServe(serverAndPort, handler)
 	helper.FatalError(err, "Router Error")
 }

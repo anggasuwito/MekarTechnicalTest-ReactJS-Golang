@@ -23,25 +23,13 @@ func InitWrkController(db *sql.DB) *WrkController {
 func (controller WrkController) Works(writer http.ResponseWriter, request *http.Request) {
 	var workResult models.Response
 	controller.workUseCase.Works(&workResult)
-	if workResult.Meta.Code == 404 {
-		response := models.Response{
-			Meta: workResult.Meta,
-			Data: workResult.Data,
-		}
-		byteOfResponse, _ := json.Marshal(response)
-		writer.WriteHeader(workResult.Meta.Code)
-		writer.Write(byteOfResponse)
-		log.Printf(" | %v", workResult.Meta.Message)
-		helper.LogApp(workResult.Meta.Message)
-	} else {
-		response := models.Response{
-			Meta: workResult.Meta,
-			Data: workResult.Data,
-		}
-		byteOfResponse, _ := json.Marshal(response)
-		writer.WriteHeader(workResult.Meta.Code)
-		writer.Write(byteOfResponse)
-		log.Println(" | Success get all works")
-		helper.LogApp("Success get all works")
+	response := models.Response{
+		Meta: workResult.Meta,
+		Data: workResult.Data,
 	}
+	byteOfResponse, _ := json.Marshal(response)
+	writer.WriteHeader(workResult.Meta.Code)
+	writer.Write(byteOfResponse)
+	log.Printf(" | %v %v", workResult.Meta.Status, workResult.Meta.Message)
+	helper.LogApp(workResult.Meta.Status + " " + workResult.Meta.Message)
 }

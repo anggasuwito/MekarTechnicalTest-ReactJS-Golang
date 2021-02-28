@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { getAllUsers, getUserByID, createNewUser } from '../../api/UserAPI'
 import SearchUser from './SearchUser'
 import UserPagination from './UserPagination'
 import CreateUser from './CreateUser'
@@ -13,10 +14,12 @@ const User = () => {
 
     useEffect(() => {
         loadData()
-    }, [keywords, page, limit])
+    }, [])
 
     const loadData = () => {
-        setTotalResult(25)
+        getAllUsers().then((response) => {
+            console.log(response);
+        })
     }
 
     const onKeywords = (e) => {

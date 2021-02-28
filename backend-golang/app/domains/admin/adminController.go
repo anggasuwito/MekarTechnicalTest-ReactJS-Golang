@@ -25,25 +25,13 @@ func (controller AdmController) AdminLogin(writer http.ResponseWriter, request *
 	var adminData AdmModel
 	json.NewDecoder(request.Body).Decode(&adminData)
 	controller.admUseCase.AdminLogin(&adminLoginResult, &adminData)
-	if adminLoginResult.Meta.Code == 404 {
-		response := models.Response{
-			Meta: adminLoginResult.Meta,
-			Data: adminLoginResult.Data,
-		}
-		byteOfResponse, _ := json.Marshal(response)
-		writer.WriteHeader(adminLoginResult.Meta.Code)
-		writer.Write(byteOfResponse)
-		log.Printf(" | %v", adminLoginResult.Meta.Message)
-		helper.LogApp(adminLoginResult.Meta.Message)
-	} else {
-		response := models.Response{
-			Meta: adminLoginResult.Meta,
-			Data: adminLoginResult.Data,
-		}
-		byteOfResponse, _ := json.Marshal(response)
-		writer.WriteHeader(adminLoginResult.Meta.Code)
-		writer.Write(byteOfResponse)
-		log.Println(" | Success admin login")
-		helper.LogApp("Success admin login")
+	response := models.Response{
+		Meta: adminLoginResult.Meta,
+		Data: adminLoginResult.Data,
 	}
+	byteOfResponse, _ := json.Marshal(response)
+	writer.WriteHeader(http.StatusOK)
+	writer.Write(byteOfResponse)
+	log.Printf(" | %v %v", adminLoginResult.Meta.Status, adminLoginResult.Meta.Message)
+	helper.LogApp(adminLoginResult.Meta.Status + " " + adminLoginResult.Meta.Message)
 }
