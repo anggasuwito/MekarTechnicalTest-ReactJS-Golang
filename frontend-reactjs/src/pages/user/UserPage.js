@@ -214,11 +214,11 @@ const User = (props) => {
             birthDate: "",
             numberIdCard: "",
             work: {
-                id: "",
+                id: 0,
                 name: ""
             },
             study: {
-                id: "",
+                id: 0,
                 name: ""
             }
         })
@@ -232,23 +232,23 @@ const User = (props) => {
     const hideUpdateUser = () => {
         setShowUpdateUserModal(!showUpdateUserModal)
         setResultDetails({
-            id: "",
+            id: 0,
             name: "",
             birthDate: "",
             numberIdCard: "",
             work: {
-                id: "",
+                id: 0,
                 name: ""
             },
             study: {
-                id: "",
+                id: 0,
                 name: ""
             }
         })
     }
     let updateModal
     if (showUpdateUserModal) {
-        updateModal = <UpdateUser show={showUpdateUserModal} onHide={hideUpdateUser} result={resultDetails} updateUserByID={updateUser} works={resultWorks} studies={resultStudies} />
+        updateModal = <UpdateUser result={resultDetails} show={showUpdateUserModal} onHide={hideUpdateUser}  updateUser={updateUser} works={resultWorks} studies={resultStudies} />
     }
     return (
         <div className="container">

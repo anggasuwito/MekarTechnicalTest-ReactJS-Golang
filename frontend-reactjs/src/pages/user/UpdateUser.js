@@ -2,12 +2,13 @@ import React, { useState } from 'react'
 import { Modal, Button } from 'react-bootstrap'
 
 const UpdateUser = (props) => {
-    const [id] = useState(props.id)
-    const [name, setNama] = useState(props.name)
-    const [tanggalLahir, setTanggalLahir] = useState(props.birthDate)
-    const [noKTP, setNamaKTP] = useState(props.numberIdCard)
-    const [pekerjaan, setPekerjaan] = useState(props.numberIdCard)
-    const [pendidikanTerakhir, setPendidikanTerakhir] = useState(props.numberIdCard)
+    const { result, show, onHide, works, studies, updateUser } = props
+    const [id] = useState(result.id)
+    const [name, setNama] = useState(result.name)
+    const [tanggalLahir, setTanggalLahir] = useState(result.birthDate)
+    const [noKTP, setNamaKTP] = useState(result.numberIdCard)
+    const [pekerjaan, setPekerjaan] = useState(result.work.id)
+    const [pendidikanTerakhir, setPendidikanTerakhir] = useState(result.study.id)
 
     const handleChangeInputNama = (event) => { setNama(event.target.value) }
     const handleChangeInputTanggalLahir = (event) => { setTanggalLahir(event.target.value) }
@@ -16,12 +17,16 @@ const UpdateUser = (props) => {
     const handleChangeInputPendidikanTerakhir = (event) => { setPendidikanTerakhir(event.target.value) }
 
     const changeMenu = () => {
-        props.updateMenuByID(name, tanggalLahir, noKTP, pekerjaan, pendidikanTerakhir, id)
-        props.onHide()
+        updateUser(name, tanggalLahir, noKTP, pekerjaan, pendidikanTerakhir, id)
+        onHide()
     }
 
-    const { show, onHide, works, studies } = props
-
+    let saveButton
+    if (name !== "" && tanggalLahir !== "" && noKTP !== "" && pekerjaan !== "" && pendidikanTerakhir !== "") {
+        saveButton = <Button variant="primary" onClick={() => changeMenu()} > Save</Button>
+    } else {
+        saveButton = <Button variant="primary" onClick={() => changeMenu()} disabled> Save</Button>
+    }
     return (
         <div>
             <Modal
@@ -53,7 +58,7 @@ const UpdateUser = (props) => {
                                         <input className="form-control" onChange={handleChangeInputNoKTP} value={noKTP} placeholder="Masukkan No KTP" type="text" />
                                         <br />
                                         <label>Pekerjaan *</label>
-                                        <select class="form-control" onChange={handleChangeInputPekerjaan}>
+                                        <select class="form-control" onChange={handleChangeInputPekerjaan} value={pekerjaan}>
                                             <option value={""}>--Pilih Pekerjaan--</option>
                                             {works.map((work) => {
                                                 return (<option value={work.id}>{work.name}</option>)
@@ -61,7 +66,7 @@ const UpdateUser = (props) => {
                                         </select>
                                         <br />
                                         <label>Pendidikan Terakhir *</label>
-                                        <select class="form-control" onChange={handleChangeInputPendidikanTerakhir}>
+                                        <select class="form-control" onChange={handleChangeInputPendidikanTerakhir} value={pendidikanTerakhir}>
                                             <option value={""}>--Pilih Pendidikan Terakhir--</option>
                                             {studies.map((study) => {
                                                 return (<option value={study.id}>{study.name}</option>)
@@ -75,7 +80,7 @@ const UpdateUser = (props) => {
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="primary" onClick={() => changeMenu()}> Save</Button>
+                    {saveButton}
                     <Button variant="secondary" onClick={() => onHide()}>Cancel</Button>
                 </Modal.Footer>
             </Modal>

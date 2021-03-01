@@ -42,7 +42,7 @@ const updateUserByID = async (form, id) => {
             Authorization: `Bearer ${tokenKey}`
         }
     }
-    let user = await axios.post(`${mainURL}/updateuser/${id}`, form, headerConfig)
+    let user = await axios.put(`${mainURL}/updateuser/${id}`, form, headerConfig)
     return user
 }
 
