@@ -7,6 +7,8 @@ import (
 	"mekarTechnicalTest/app/models"
 	"mekarTechnicalTest/utils/helper"
 	"net/http"
+
+	"github.com/gorilla/mux"
 )
 
 //UsrController is a struct for depedency injection
@@ -22,7 +24,10 @@ func InitUsrController(db *sql.DB) *UsrController {
 //Users is a function for get all users list
 func (controller UsrController) Users(writer http.ResponseWriter, request *http.Request) {
 	var userResult models.Response
-	controller.userUseCase.Users(&userResult)
+	keywords := mux.Vars(request)["keywords"]
+	page := mux.Vars(request)["page"]
+	limit := mux.Vars(request)["limit"]
+	controller.userUseCase.Users(&userResult, keywords, page, limit)
 	response := models.Response{
 		Meta: userResult.Meta,
 		Data: userResult.Data,

@@ -2,14 +2,14 @@ import axios from 'axios';
 
 const mainURL = "http://localhost:8001/user"
 
-const getAllUsers = async () => {
+const getAllUsers = async (keywords, page, limit) => {
     const tokenKey = sessionStorage.getItem("auth")
     const headerConfig = {
         headers: {
             Authorization: `Bearer ${tokenKey}`
         }
     }
-    let user = await axios.get(`${mainURL}/users`, headerConfig)
+    let user = await axios.get(`${mainURL}/users?keywords=${keywords}&page=${page}&limit=${limit}`, headerConfig)
     return user
 }
 

@@ -2,6 +2,7 @@ package user
 
 import (
 	"database/sql"
+	"fmt"
 	"mekarTechnicalTest/app/models"
 	"mekarTechnicalTest/utils/constants"
 	"mekarTechnicalTest/utils/helper"
@@ -14,7 +15,7 @@ type UsrRepository struct {
 
 //UsrRepositoryInterface is an interface from user repository
 type UsrRepositoryInterface interface {
-	Users(userResult *models.Response)
+	Users(userResult *models.Response, keywords string, page string, limit string)
 	UserByID(userByIDResult *models.Response, userID string)
 	CreateUser(createUserResult *models.Response, userDataBody *UsrBodyModel)
 	UpdateUserByID(updateUserResult *models.Response, userDataBody *UsrBodyModel, userID string)
@@ -27,9 +28,22 @@ func InitUsrRepository(db *sql.DB) *UsrRepository {
 }
 
 //Users is a function for get all users from database
-func (repository UsrRepository) Users(userResult *models.Response) {
+func (repository UsrRepository) Users(userResult *models.Response, keywords string, page string, limit string) {
 	var users []*UsrModel
-	data, err := repository.db.Query(constants.GET_ALL_USERS, "A")
+	var totalUsers int
+	getAllUsersQuery := fmt.Sprintf(`SELECT u.id,u.nama,u.tanggal_lahir,u.no_ktp,pk.id,pk.nama,pd.id,pd.nama FROM user AS u JOIN pekerjaan AS pk ON pk.id = u.id_pekerjaan JOIN pendidikan AS pd ON pd.id = u.id_pendidikan	WHERE (u.nama LIKE '%v%v%v'	OR u.no_ktp LIKE '%v%v%v') AND u.status = 'A' LIMIT %v,%v`, "%", keywords, "%", "%", keywords, "%", page, limit)
+	countGetAllUsersQuery := fmt.Sprintf(`SELECT COUNT(*) FROM (SELECT u.id FROM user AS u JOIN pekerjaan AS pk ON pk.id = u.id_pekerjaan JOIN pendidikan AS pd ON pd.id = u.id_pendidikan	WHERE (u.nama LIKE '%v%v%v'	OR u.no_ktp LIKE '%v%v%v') AND u.status = 'A') AS c`, "%", keywords, "%", "%", keywords, "%")
+	errCount := repository.db.QueryRow(countGetAllUsersQuery).Scan(&totalUsers)
+	errCountUser := helper.ErrorNotNil(errCount)
+	if errCountUser {
+		userResult.Meta.Status = "Fail"
+		userResult.Meta.Code = 404
+		userResult.Meta.Message = "count all users error"
+		userResult.Meta.Records = 0
+		userResult.Data = nil
+		return
+	}
+	data, err := repository.db.Query(getAllUsersQuery)
 	getUserErr := helper.ErrorNotNil(err)
 	if getUserErr {
 		userResult.Meta.Status = "Fail"
@@ -54,11 +68,10 @@ func (repository UsrRepository) Users(userResult *models.Response) {
 		}
 		users = append(users, &user)
 	}
-	countUsers := len(users)
 	userResult.Meta.Status = "Success"
 	userResult.Meta.Code = 202
 	userResult.Meta.Message = "Success get all users"
-	userResult.Meta.Records = countUsers
+	userResult.Meta.Records = totalUsers
 	userResult.Data = users
 }
 

@@ -25,27 +25,6 @@ const (
 						pendidikan AS p
 					WHERE
 						p.status = ?`
-	GET_ALL_USERS = `SELECT 
-						u.id,
-						u.nama,
-						u.tanggal_lahir,
-						u.no_ktp,
-						pk.id,
-						pk.nama,
-						pd.id,
-						pd.nama
-					FROM 
-						user AS u
-					JOIN
-						pekerjaan AS pk
-							ON
-						pk.id = u.id_pekerjaan
-					JOIN
-						pendidikan AS pd
-							ON
-						pd.id = u.id_pendidikan
-					WHERE 
-						u.status = ?`
 	GET_USER_BY_ID = `SELECT 
 						u.id,
 						u.nama,

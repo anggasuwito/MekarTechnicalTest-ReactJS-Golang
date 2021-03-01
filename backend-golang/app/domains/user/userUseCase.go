@@ -3,6 +3,7 @@ package user
 import (
 	"database/sql"
 	"mekarTechnicalTest/app/models"
+	"strconv"
 )
 
 //UsrUseCase is a struct for depedency injection
@@ -13,7 +14,7 @@ type UsrUseCase struct {
 
 //UsrUseCaseInterface is an interface from user use case
 type UsrUseCaseInterface interface {
-	Users(userResult *models.Response)
+	Users(userResult *models.Response, keywords string, page string, limit string)
 	UserByID(userByIDResult *models.Response, userID string)
 	CreateUser(createUserResult *models.Response, userDataBody *UsrBodyModel)
 	UpdateUserByID(updateUserResult *models.Response, userDataBody *UsrBodyModel, userID string)
@@ -26,8 +27,11 @@ func InitUsrUseCase(db *sql.DB) *UsrUseCase {
 }
 
 //Users in user use case is a function for check some validation or put some logic
-func (useCase UsrUseCase) Users(userResult *models.Response) {
-	useCase.userRepository.Users(userResult)
+func (useCase UsrUseCase) Users(userResult *models.Response, keywords string, page string, limit string) {
+	convertPage, _ := strconv.Atoi(page)
+	convertLimit, _ := strconv.Atoi(limit)
+	page = strconv.Itoa(convertPage*convertLimit - convertLimit)
+	useCase.userRepository.Users(userResult, keywords, page, limit)
 }
 
 //UserByID in user use case is a function for check some validation or put some logic

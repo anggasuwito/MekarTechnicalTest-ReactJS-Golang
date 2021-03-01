@@ -39,10 +39,10 @@ const User = (props) => {
 
     useEffect(() => {
         loadData()
-    }, [])// eslint-disable-line react-hooks/exhaustive-deps
+    }, [keywords,page,limit])// eslint-disable-line react-hooks/exhaustive-deps
 
     const loadData = () => {
-        getAllUsers().then((response) => {
+        getAllUsers(keywords, page, limit).then((response) => {
             if (response.data.meta.code === 202) {
                 setTotalResult(response.data.meta.records)
                 setResult(response.data.data)
@@ -115,18 +115,6 @@ const User = (props) => {
             '',
             'error'
         )
-    }
-
-    const onKeywords = (e) => {
-        setKeywords(e)
-    }
-
-    const onSetPage = (page) => {
-        setPage(page)
-    }
-
-    const onSetLimit = (limit) => {
-        setLimit(limit)
     }
 
     const handleCreateUserModal = () => {
@@ -246,6 +234,19 @@ const User = (props) => {
             }
         })
     }
+
+    const onKeywords = (e) => {
+        setKeywords(e)
+    }
+
+    const onSetPage = (page) => {
+        setPage(page)
+    }
+
+    const onSetLimit = (limit) => {
+        setLimit(limit)
+    }
+
     let updateModal
     if (showUpdateUserModal) {
         updateModal = <UpdateUser result={resultDetails} show={showUpdateUserModal} onHide={hideUpdateUser}  updateUser={updateUser} works={resultWorks} studies={resultStudies} />

@@ -16,16 +16,16 @@ const UpdateUser = (props) => {
     const handleChangeInputPekerjaan = (event) => { setPekerjaan(event.target.value) }
     const handleChangeInputPendidikanTerakhir = (event) => { setPendidikanTerakhir(event.target.value) }
 
-    const changeMenu = () => {
+    const changeUser = () => {
         updateUser(name, tanggalLahir, noKTP, pekerjaan, pendidikanTerakhir, id)
         onHide()
     }
 
     let saveButton
     if (name !== "" && tanggalLahir !== "" && noKTP !== "" && pekerjaan !== "" && pendidikanTerakhir !== "") {
-        saveButton = <Button variant="primary" onClick={() => changeMenu()} > Save</Button>
+        saveButton = <Button variant="primary" onClick={() => changeUser()} > Save</Button>
     } else {
-        saveButton = <Button variant="primary" onClick={() => changeMenu()} disabled> Save</Button>
+        saveButton = <Button variant="primary" onClick={() => changeUser()} disabled> Save</Button>
     }
     return (
         <div>
