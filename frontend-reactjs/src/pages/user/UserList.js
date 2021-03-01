@@ -4,27 +4,49 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faEye, faEdit } from "@fortawesome/free-solid-svg-icons";
 
 const UserList = (props) => {
-    const { result, showDetailsUser, deleteUser, showUpdateUser } = props
+    const { result, showDetailsUser, deleteUser, showUpdateUser, page, limit } = props
     let user
     if (result !== null) {
         user = result.map((user, index) => {
-            return (<tr>
-                <td className="align-middle">{index + 1}</td>
-                <td className="align-middle">{user.name}</td>
-                <td className="align-middle">{user.birthDate}</td>
-                <td className="align-middle">{user.numberIdCard}</td>
-                <td className="align-middle">{user.work.name}</td>
-                <td className="align-middle">{user.study.name}</td>
-                <td>
-                    <Button variant="secondary" onClick={() => { showDetailsUser(user.id) }} > <FontAwesomeIcon icon={faEye} /></Button>
-                </td>
-                <td>
-                    <Button variant="success" onClick={() => { showUpdateUser(user) }}> <FontAwesomeIcon icon={faEdit} /></Button>
-                </td>
-                <td>
-                    <Button variant="danger" onClick={() => { deleteUser(user.id) }}> <FontAwesomeIcon icon={faTrash} /></Button>
-                </td>
-            </tr>)
+            if (page === 1) {
+                return (
+                    <tr>
+                        <td className="align-middle">{index + 1}</td>
+                        <td className="align-middle">{user.name}</td>
+                        <td className="align-middle">{user.birthDate}</td>
+                        <td className="align-middle">{user.numberIdCard}</td>
+                        <td className="align-middle">{user.work.name}</td>
+                        <td className="align-middle">{user.study.name}</td>
+                        <td>
+                            <Button variant="secondary" onClick={() => { showDetailsUser(user.id) }} > <FontAwesomeIcon icon={faEye} /></Button>
+                        </td>
+                        <td>
+                            <Button variant="success" onClick={() => { showUpdateUser(user) }}> <FontAwesomeIcon icon={faEdit} /></Button>
+                        </td>
+                        <td>
+                            <Button variant="danger" onClick={() => { deleteUser(user.id) }}> <FontAwesomeIcon icon={faTrash} /></Button>
+                        </td>
+                    </tr>)
+            } else {
+                return (
+                    <tr>
+                        <td className="align-middle">{limit * (page - 1) + index + 1}</td>
+                        <td className="align-middle">{user.name}</td>
+                        <td className="align-middle">{user.birthDate}</td>
+                        <td className="align-middle">{user.numberIdCard}</td>
+                        <td className="align-middle">{user.work.name}</td>
+                        <td className="align-middle">{user.study.name}</td>
+                        <td>
+                            <Button variant="secondary" onClick={() => { showDetailsUser(user.id) }} > <FontAwesomeIcon icon={faEye} /></Button>
+                        </td>
+                        <td>
+                            <Button variant="success" onClick={() => { showUpdateUser(user) }}> <FontAwesomeIcon icon={faEdit} /></Button>
+                        </td>
+                        <td>
+                            <Button variant="danger" onClick={() => { deleteUser(user.id) }}> <FontAwesomeIcon icon={faTrash} /></Button>
+                        </td>
+                    </tr>)
+            }
         })
     }
     return (

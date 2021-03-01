@@ -260,7 +260,7 @@ const User = (props) => {
             <CreateUser show={showCreateUserModal} handleCreateUserModal={handleCreateUserModal} addNewUser={addNewUser} works={resultWorks} studies={resultStudies} />
             <DetailsUser resultDetails={resultDetails} show={showDetailsUserModal} onHide={hideDetailsUser} />
             {updateModal}
-            <UserList result={result} showDetailsUser={showDetailsUser} showUpdateUser={showUpdateUser} deleteUser={deleteUser} />
+            <UserList result={result} page={page} limit={limit} showDetailsUser={showDetailsUser} showUpdateUser={showUpdateUser} deleteUser={deleteUser} />
             <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
         </div>
     )
