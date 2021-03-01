@@ -78,4 +78,24 @@ const (
 								id_pendidikan) 
 						VALUES 
 							(?,?,?,?,?)`
+	UPDATE_USER = `UPDATE 
+						user
+					SET 
+						nama = ?,
+						tanggal_lahir = ?,
+						no_ktp = ?,
+						id_pekerjaan = ?,
+						id_pendidikan = ?
+					WHERE
+						id = ?
+							AND
+						status = ?`
+	DELETE_USER = `UPDATE 
+						user
+					SET 
+						status = ?
+					WHERE
+						id = ?
+							AND
+						status = ?`
 )

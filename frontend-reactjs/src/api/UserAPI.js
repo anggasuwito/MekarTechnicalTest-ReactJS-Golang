@@ -31,9 +31,30 @@ const createNewUser = async (form) => {
             Authorization: `Bearer ${tokenKey}`
         }
     }
-    console.log(form);
     let user = await axios.post(`${mainURL}/createuser`, form, headerConfig)
     return user
 }
 
-export { getAllUsers, getUserByID, createNewUser };
+const updateUserByID = async (form, id) => {
+    const tokenKey = sessionStorage.getItem("auth")
+    const headerConfig = {
+        headers: {
+            Authorization: `Bearer ${tokenKey}`
+        }
+    }
+    let user = await axios.post(`${mainURL}/updateuser/${id}`, form, headerConfig)
+    return user
+}
+
+const deleteUserByID = async (id) => {
+    const tokenKey = sessionStorage.getItem("auth")
+    const headerConfig = {
+        headers: {
+            Authorization: `Bearer ${tokenKey}`
+        }
+    }
+    let user = await axios.delete(`${mainURL}/deleteuser/${id}`, headerConfig)
+    return user
+}
+
+export { getAllUsers, getUserByID, createNewUser, updateUserByID, deleteUserByID };

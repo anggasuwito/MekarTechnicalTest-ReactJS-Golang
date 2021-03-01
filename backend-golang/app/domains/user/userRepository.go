@@ -17,6 +17,8 @@ type UsrRepositoryInterface interface {
 	Users(userResult *models.Response)
 	UserByID(userByIDResult *models.Response, userID string)
 	CreateUser(createUserResult *models.Response, userDataBody *UsrBodyModel)
+	UpdateUserByID(updateUserResult *models.Response, userDataBody *UsrBodyModel, userID string)
+	DeleteUserByID(deleteUserResult *models.Response, userID string)
 }
 
 //InitUsrRepository is a function for inject user repository database
@@ -106,4 +108,86 @@ func (repository UsrRepository) CreateUser(createUserResult *models.Response, us
 	createUserResult.Meta.Message = "Success create new user"
 	createUserResult.Meta.Records = 0
 	createUserResult.Data = nil
+}
+
+//UpdateUserByID is a function for update user data from database
+func (repository UsrRepository) UpdateUserByID(updateUserResult *models.Response, userDataBody *UsrBodyModel, userID string) {
+	var user UsrModel
+	repository.db.QueryRow(constants.GET_USER_BY_ID, userID, "A").Scan(&user.UserID, &user.Name, &user.BirthDate, &user.NumberIDCard, &user.Work.WorkID, &user.Work.Name, &user.Study.StudyID, &user.Study.Name)
+	if user.Name == "" {
+		updateUserResult.Meta.Status = "Fail"
+		updateUserResult.Meta.Code = 404
+		updateUserResult.Meta.Message = "user id not found"
+		updateUserResult.Meta.Records = 0
+		updateUserResult.Data = nil
+		return
+	}
+
+	updateUser, updateUserErr := repository.db.Prepare(constants.UPDATE_USER)
+	prepUpdateUserErr := helper.ErrorNotNil(updateUserErr)
+	if prepUpdateUserErr {
+		updateUserResult.Meta.Status = "Fail"
+		updateUserResult.Meta.Code = 404
+		updateUserResult.Meta.Message = "prepare update user query error"
+		updateUserResult.Meta.Records = 0
+		updateUserResult.Data = nil
+		return
+	}
+
+	_, execUpdateUserBodyErr := updateUser.Exec(userDataBody.Name, userDataBody.BirthDate, userDataBody.NumberIDCard, userDataBody.WorkID, userDataBody.StudyID, userID, "A")
+	execUpdateUserErr := helper.ErrorNotNil(execUpdateUserBodyErr)
+	if execUpdateUserErr {
+		updateUserResult.Meta.Status = "Fail"
+		updateUserResult.Meta.Code = 404
+		updateUserResult.Meta.Message = "exec update user query error"
+		updateUserResult.Meta.Records = 0
+		updateUserResult.Data = nil
+		return
+	}
+	updateUserResult.Meta.Status = "Success"
+	updateUserResult.Meta.Code = 202
+	updateUserResult.Meta.Message = "Success update user"
+	updateUserResult.Meta.Records = 0
+	updateUserResult.Data = nil
+}
+
+//DeleteUserByID is a function for soft delete user by id from database
+func (repository UsrRepository) DeleteUserByID(deleteUserResult *models.Response, userID string) {
+	var user UsrModel
+	repository.db.QueryRow(constants.GET_USER_BY_ID, userID, "A").Scan(&user.UserID, &user.Name, &user.BirthDate, &user.NumberIDCard, &user.Work.WorkID, &user.Work.Name, &user.Study.StudyID, &user.Study.Name)
+	if user.Name == "" {
+		deleteUserResult.Meta.Status = "Fail"
+		deleteUserResult.Meta.Code = 404
+		deleteUserResult.Meta.Message = "user id not found"
+		deleteUserResult.Meta.Records = 0
+		deleteUserResult.Data = nil
+		return
+	}
+
+	deleteUser, deleteUserErr := repository.db.Prepare(constants.DELETE_USER)
+	prepDeleteUserErr := helper.ErrorNotNil(deleteUserErr)
+	if prepDeleteUserErr {
+		deleteUserResult.Meta.Status = "Fail"
+		deleteUserResult.Meta.Code = 404
+		deleteUserResult.Meta.Message = "prepare delete user query error"
+		deleteUserResult.Meta.Records = 0
+		deleteUserResult.Data = nil
+		return
+	}
+
+	_, execDeleteUserDataErr := deleteUser.Exec("I", userID, "A")
+	execDeleteUserErr := helper.ErrorNotNil(execDeleteUserDataErr)
+	if execDeleteUserErr {
+		deleteUserResult.Meta.Status = "Fail"
+		deleteUserResult.Meta.Code = 404
+		deleteUserResult.Meta.Message = "exec delete user query error"
+		deleteUserResult.Meta.Records = 0
+		deleteUserResult.Data = nil
+		return
+	}
+	deleteUserResult.Meta.Status = "Success"
+	deleteUserResult.Meta.Code = 202
+	deleteUserResult.Meta.Message = "Success delete user"
+	deleteUserResult.Meta.Records = 0
+	deleteUserResult.Data = nil
 }

@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faEye, faEdit } from "@fortawesome/free-solid-svg-icons";
 
 const UserList = (props) => {
-    const { result, showDetailsUser } = props
+    const { result, showDetailsUser, deleteUser, showUpdateUser } = props
     return (
         <div style={{ marginTop: 70 }} className="container">
             <Table striped bordered hover>
@@ -32,10 +32,10 @@ const UserList = (props) => {
                                 <Button variant="secondary" onClick={() => { showDetailsUser(user.id) }} > <FontAwesomeIcon icon={faEye} /></Button>
                             </td>
                             <td>
-                                <Button variant="success" > <FontAwesomeIcon icon={faEdit} /></Button>
+                                <Button variant="success" onClick={() => { showUpdateUser(user) }}> <FontAwesomeIcon icon={faEdit} /></Button>
                             </td>
                             <td>
-                                <Button variant="danger" > <FontAwesomeIcon icon={faTrash} /></Button>
+                                <Button variant="danger" onClick={() => { deleteUser(user.id) }}> <FontAwesomeIcon icon={faTrash} /></Button>
                             </td>
                         </tr>)
                     })

@@ -13,6 +13,6 @@ func InitUserRoute(appConfig *models.AppConfigModel, mainRoute string) {
 	user.HandleFunc("/users", userController.Users).Methods("GET")
 	user.HandleFunc("/{userId}", userController.UserByID).Methods("GET")
 	user.HandleFunc("/createuser", userController.CreateUser).Methods("POST")
-	// user.HandleFunc("/updateuser/{userId}", userController.UpdateUserByID).Methods("PUT")
-	// user.HandleFunc("/deleteuser/{userId}", userController.DeleteUserByID).Methods("DELETE")
+	user.HandleFunc("/updateuser/{userId}", userController.UpdateUserByID).Methods("PUT")
+	user.HandleFunc("/deleteuser/{userId}", userController.DeleteUserByID).Methods("DELETE")
 }

@@ -66,3 +66,37 @@ func (controller UsrController) CreateUser(writer http.ResponseWriter, request *
 	log.Printf(" | %v %v", createUserResult.Meta.Status, createUserResult.Meta.Message)
 	helper.LogApp(createUserResult.Meta.Status + " " + createUserResult.Meta.Message)
 }
+
+//UpdateUserByID is a function for update user data
+func (controller UsrController) UpdateUserByID(writer http.ResponseWriter, request *http.Request) {
+	var updateUserResult models.Response
+	var userDataBody UsrBodyModel
+	userID := helper.GomuxPathVariable("userId", request)
+	json.NewDecoder(request.Body).Decode(&userDataBody)
+	controller.userUseCase.UpdateUserByID(&updateUserResult, &userDataBody, userID)
+	response := models.Response{
+		Meta: updateUserResult.Meta,
+		Data: updateUserResult.Data,
+	}
+	byteOfResponse, _ := json.Marshal(response)
+	writer.WriteHeader(http.StatusOK)
+	writer.Write(byteOfResponse)
+	log.Printf(" | %v %v", updateUserResult.Meta.Status, updateUserResult.Meta.Message)
+	helper.LogApp(updateUserResult.Meta.Status + " " + updateUserResult.Meta.Message)
+}
+
+//DeleteUserByID is a function for soft delete user data
+func (controller UsrController) DeleteUserByID(writer http.ResponseWriter, request *http.Request) {
+	var deleteUserResult models.Response
+	userID := helper.GomuxPathVariable("userId", request)
+	controller.userUseCase.DeleteUserByID(&deleteUserResult, userID)
+	response := models.Response{
+		Meta: deleteUserResult.Meta,
+		Data: deleteUserResult.Data,
+	}
+	byteOfResponse, _ := json.Marshal(response)
+	writer.WriteHeader(http.StatusOK)
+	writer.Write(byteOfResponse)
+	log.Printf(" | %v %v", deleteUserResult.Meta.Status, deleteUserResult.Meta.Message)
+	helper.LogApp(deleteUserResult.Meta.Status + " " + deleteUserResult.Meta.Message)
+}
