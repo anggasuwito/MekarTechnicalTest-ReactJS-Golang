@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import { Modal, Button } from 'react-bootstrap'
-
 const CreateUser = (props) => {
-    const { show, handleCreateUserModal, addNewUser } = props
+    const { show, handleCreateUserModal, addNewUser, works, studies } = props
     const [nama, setNama] = useState("")
     const [tanggalLahir, setTanggalLahir] = useState("")
     const [noKTP, setNamaKTP] = useState("")
@@ -70,19 +69,17 @@ const CreateUser = (props) => {
                                         <label>Pekerjaan *</label>
                                         <select class="form-control" onChange={handleChangeInputPekerjaan}>
                                             <option value={""}>--Pilih Pekerjaan--</option>
-                                            <option value={"1"}>1</option>
-                                            <option value={"5"}>2</option>
-                                            <option value={"6"}>3</option>
-                                            <option value={"3"}>4</option>
+                                            {works.map((work) => {
+                                                return (<option value={work.id}>{work.name}</option>)
+                                            })}
                                         </select>
                                         <br />
                                         <label>Pendidikan Terakhir *</label>
                                         <select class="form-control" onChange={handleChangeInputPendidikanTerakhir}>
                                             <option value={""}>--Pilih Pendidikan Terakhir--</option>
-                                            <option value={"7"}>2</option>
-                                            <option value={"35"}>3</option>
-                                            <option value={"132"}>4</option>
-                                            <option value={"111"}>5</option>
+                                            {studies.map((study) => {
+                                                return (<option value={study.id}>{study.name}</option>)
+                                            })}
                                         </select>
                                     </form>
                                     <br />

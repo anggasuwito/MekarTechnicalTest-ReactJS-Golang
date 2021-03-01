@@ -3,17 +3,36 @@ import axios from 'axios';
 const mainURL = "http://localhost:8001/user"
 
 const getAllUsers = async () => {
-    let user = await axios.get(`${mainURL}/users`)
+    const tokenKey = sessionStorage.getItem("auth")
+    const headerConfig = {
+        headers: {
+            Authorization: `Bearer ${tokenKey}`
+        }
+    }
+    let user = await axios.get(`${mainURL}/users`, headerConfig)
     return user
 }
 
 const getUserByID = async (id) => {
-    let user = await axios.get(`${mainURL}/${id}`)
+    const tokenKey = sessionStorage.getItem("auth")
+    const headerConfig = {
+        headers: {
+            Authorization: `Bearer ${tokenKey}`
+        }
+    }
+    let user = await axios.get(`${mainURL}/${id}`, headerConfig)
     return user
 }
 
 const createNewUser = async (form) => {
-    let user = await axios.post(`${mainURL}/createuser`, form)
+    const tokenKey = sessionStorage.getItem("auth")
+    const headerConfig = {
+        headers: {
+            Authorization: `Bearer ${tokenKey}`
+        }
+    }
+    console.log(form);
+    let user = await axios.post(`${mainURL}/createuser`, form, headerConfig)
     return user
 }
 

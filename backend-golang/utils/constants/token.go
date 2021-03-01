@@ -2,5 +2,5 @@ package constants
 
 const (
 	TOKEN_KEY    = "MyTokenKeyCode"
-	TOKEN_EXPIRE = 600
+	TOKEN_EXPIRE = 120
 )

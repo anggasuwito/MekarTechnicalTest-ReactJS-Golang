@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Route, Switch, withRouter } from 'react-router-dom'
+import Swal from 'sweetalert2';
 import { adminLogin } from '../api/AdminAPI'
 import LoginPage from './login/LoginPage'
 import MainNavbar from '../components/MainNavbar'
@@ -10,13 +11,14 @@ import NotFoundPage from './notfound/NotFoundPage'
 const routes = [
     { id: 1, path: '/home', component: HomePage },
     { id: 2, path: '/user', component: UserPage },
+    { id: 3, path: '*', component: NotFoundPage }
 ]
 
 const Navigation = (props) => {
     const [auth, setAuth] = useState(false)
-
+    const [errorMessage, setErrorMessage] = useState("")
     const routeList = routes.map((route) => {
-        return <Route key={route.id} path={route.path} component={route.component} />
+        return <Route key={route.id} path={route.path} render={() => { return <route.component onLogout={onLogout}  /> }} />
     })
 
     useEffect(() => {
@@ -29,20 +31,26 @@ const Navigation = (props) => {
     }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
     const onLogin = (username, password) => {
-        console.log("nav = " + username);
-        console.log("nav = " + password);
         adminLogin({
             username: username,
             password: password
         }).then((response) => {
-            console.log(response.headers);
-            setAuth(true)
-            sessionStorage.setItem("auth", "loggedIn")
-            props.history.push({
-                pathname: "/home"
-            })
-        }).catch((err) => {
-            console.log("err = " + err);
+            if (response.data.meta.code === 202) {
+                Swal.fire(
+                    'Login Success',
+                    '',
+                    'success'
+                ).then(() => {
+                    setAuth(true)
+                    sessionStorage.setItem("auth", response.data.data.token)
+                    props.history.push({
+                        pathname: "/home"
+                    })
+                    setErrorMessage("")
+                })
+            } else {
+                setErrorMessage("invalid username or password")
+            }
         })
     }
 
@@ -58,9 +66,8 @@ const Navigation = (props) => {
         <div>
             <MainNavbar onLogout={onLogout} auth={auth} />
             <Switch>
-                <Route exact path="/" render={() => { return <LoginPage onLogin={onLogin} /> }} />
+                <Route exact path="/" render={() => { return <LoginPage onLogin={onLogin} errorMessage={errorMessage} /> }} />
                 {routeList}
-                <Route path="*" component={NotFoundPage} />
             </Switch>
         </div>
     )

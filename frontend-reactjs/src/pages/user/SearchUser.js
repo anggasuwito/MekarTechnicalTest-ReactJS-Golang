@@ -6,7 +6,7 @@ export default function SearchUser(props) {
     return (
         <div className="float-left">
             <div className="container">
-                <input type="text" className="form-control" value={keywords} onChange={(e) => onKeywords(e.target.value)} placeholder="Search...." />
+                <input type="text" className="form-control" value={keywords} onChange={(e) => onKeywords(e.target.value)} placeholder="Search.... (Nama/No KTP)" />
             </div>
         </div>
     )

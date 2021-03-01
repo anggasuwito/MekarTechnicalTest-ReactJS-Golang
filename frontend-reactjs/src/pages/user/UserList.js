@@ -4,12 +4,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faEye, faEdit } from "@fortawesome/free-solid-svg-icons";
 
 const UserList = (props) => {
+    const { result, showDetailsUser } = props
     return (
         <div style={{ marginTop: 70 }} className="container">
             <Table striped bordered hover>
                 <thead>
                     <tr>
-                        <th>No.</th>
+                        <th>No</th>
                         <th>Nama</th>
                         <th>Tanggal Lahir</th>
                         <th>No KTP</th>
@@ -19,16 +20,16 @@ const UserList = (props) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {
-                        <tr>
-                            <td>{"1"}</td>
-                            <td>{"Nama"}</td>
-                            <td>{"Tgl lahir"}</td>
-                            <td>{"No KTP"}</td>
-                            <td>{"Pekerjaan"}</td>
-                            <td>{"Pendidikan Trakhir"}</td>
+                    {result.map((user, index) => {
+                        return (<tr>
+                            <td className="align-middle">{index + 1}</td>
+                            <td className="align-middle">{user.name}</td>
+                            <td className="align-middle">{user.birthDate}</td>
+                            <td className="align-middle">{user.numberIdCard}</td>
+                            <td className="align-middle">{user.work.name}</td>
+                            <td className="align-middle">{user.study.name}</td>
                             <td>
-                                <Button variant="secondary" > <FontAwesomeIcon icon={faEye} /></Button>
+                                <Button variant="secondary" onClick={() => { showDetailsUser(user.id) }} > <FontAwesomeIcon icon={faEye} /></Button>
                             </td>
                             <td>
                                 <Button variant="success" > <FontAwesomeIcon icon={faEdit} /></Button>
@@ -36,7 +37,8 @@ const UserList = (props) => {
                             <td>
                                 <Button variant="danger" > <FontAwesomeIcon icon={faTrash} /></Button>
                             </td>
-                        </tr>
+                        </tr>)
+                    })
                     }
                 </tbody>
             </Table>
