@@ -37,7 +37,7 @@ const LoginPage = (props) => {
                         <br />
                         <input className="form-control" placeholder="Username" type="text" value={username} onChange={handleUsername} />
                         <br />
-                        <input className="form-control" placeholder="Password" type="password" value={password} onChange={handlePassword} />
+                        <input className="form-control" placeholder="Password" type="text" style={{ WebkitTextSecurity: "disc" }} value={password} onChange={handlePassword} />
                         <br />
                         <br />
                         {errorAlert}
